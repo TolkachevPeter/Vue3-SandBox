@@ -1,5 +1,5 @@
 <template>
-    <div class="app-main-layout">
+  <div class="app-main-layout">
     <nav class="navbar orange lighten-1">
       <div class="nav-wrapper">
         <div class="navbar-left">
@@ -11,16 +11,12 @@
 
         <ul class="right hide-on-small-and-down">
           <li>
-            <a
-                class="dropdown-trigger black-text"
-                href="#"
-                data-target="dropdown"
-            >
+            <a class="dropdown-trigger black-text" href="#" data-target="dropdown">
               USER NAME
               <i class="material-icons right">arrow_drop_down</i>
             </a>
 
-            <ul id='dropdown' class='dropdown-content'>
+            <ul id="dropdown" class="dropdown-content">
               <li>
                 <a href="#" class="black-text">
                   <i class="material-icons">account_circle</i>Профиль
@@ -58,92 +54,14 @@
 
     <main class="app-content">
       <div class="app-page">
-
-<div>
-  <div class="page-title">
-    <h3>Категории</h3>
-  </div>
-  <section>
-    <div class="row">
-      <div class="col s12 m6">
-        <div>
-          <div class="page-subtitle">
-            <h4>Создать</h4>
-          </div>
-
-          <form>
-            <div class="input-field">
-              <input
-                  id="name"
-                  type="text"
-              >
-              <label for="name">Название</label>
-              <span class="helper-text invalid">Введите название</span>
-            </div>
-
-            <div class="input-field">
-              <input
-                  id="limit"
-                  type="number"
-              >
-              <label for="limit">Лимит</label>
-              <span class="helper-text invalid">Минимальная величина</span>
-            </div>
-
-            <button class="btn waves-effect waves-light" type="submit">
-              Создать
-              <i class="material-icons right">send</i>
-            </button>
-          </form>
-        </div>
+        <router-view/>
       </div>
-      <div class="col s12 m6">
-        <div>
-          <div class="page-subtitle">
-            <h4>Редактировать</h4>
-          </div>
+    </main>
 
-          <form>
-            <div class="input-field" >
-              <select>
-                <option>Category</option>
-              </select>
-              <label>Выберите категорию</label>
-            </div>
-
-            <div class="input-field">
-              <input type="text" id="name">
-              <label for="name">Название</label>
-              <span class="helper-text invalid">TITLE</span>
-            </div>
-
-            <div class="input-field">
-              <input
-                  id="limit"
-                  type="number"
-              >
-              <label for="limit">Лимит</label>
-              <span class="helper-text invalid">LIMIT</span>
-            </div>
-
-            <button class="btn waves-effect waves-light" type="submit">
-              Обновить
-              <i class="material-icons right">send</i>
-            </button>
-          </form>
-        </div>
-      </div>
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large blue" href="#">
+        <i class="large material-icons">add</i>
+      </a>
     </div>
-  </section>
-</div>
-
-</div>
-</main>
-
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large blue" href="#">
-    <i class="large material-icons">add</i>
-  </a>
-</div>
-</div>
+  </div>
 </template>
