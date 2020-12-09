@@ -24,7 +24,8 @@
               </li>
               <li class="divider" tabindex="-1"></li>
               <li>
-                <a href="#" class="black-text">
+                <a href="#" class="black-text"
+                @click.prevent="logout">
                   <i class="material-icons">assignment_return</i>Выйти
                 </a>
               </li>
@@ -37,6 +38,11 @@
 
 <script>
 export default {
+  methods: {
+    logout() {
+      console.log('logout');
+    },
+  },
   mounted() {
     // eslint-disable-next-line no-undef
     M.Dropdown.init(this.$refs.dropdown, {
