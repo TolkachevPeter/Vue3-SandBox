@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
@@ -8,7 +7,8 @@
             id="email"
             type="text"
             v-model.trim="email"
-            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
+            :class="{invalid:
+            ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
         >
         <label for="email">Email</label>
         <small
@@ -25,7 +25,9 @@
             id="password"
             type="password"
             v-model.trim="password"
-            :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
+            :class="{invalid:
+            ($v.password.$dirty && !$v.password.required) ||
+            ($v.password.$dirty && !$v.password.minLength)}"
         >
         <label for="password">Пароль</label>
         <small
@@ -38,7 +40,9 @@
           class="helper-text invalid"
           v-else-if="$v.password.$dirty && !$v.password.minLength"
         >
-          Пароль должен быть {{$v.password.$params.minLength.min}} символов. Сейчас он {{password.length}}
+          Пароль должен быть
+          {{$v.password.$params.minLength.min}}
+          символов. Сейчас он {{password.length}}
         </small>
       </div>
     </div>
@@ -63,6 +67,7 @@
 
 <script>
 import { email, required, minLength } from 'vuelidate/lib/validators';
+import messages from '@/utils/messages';
 
 export default {
   name: 'login',
@@ -73,6 +78,11 @@ export default {
   validations: {
     email: { email, required },
     password: { required, minLength: minLength(6) },
+  },
+  mounted() {
+    if (messages[this.$route.query.message]) {
+      this.$message(messages[this.$route.query.message]);
+    }
   },
   methods: {
     submitHandler() {
