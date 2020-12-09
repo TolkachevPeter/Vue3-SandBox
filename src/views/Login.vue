@@ -5,9 +5,11 @@
       <div class="input-field">
         <input id="email" type="text"
         v-model.trim='email'
-        :class="{invalid: $v.email.$dirty}"
+        :class="{invalid: ($v.email.$dirty && !$v.email.required) ||
+        ($v.email.$dirty && !$v.email.email)}"
          />
-        <label for="email">Email</label>
+        <label for="email"
+        v-if='$v.email.$dirty && !$v.email.required'>Поле email не должно быть пустым</label>
         <small class="helper-text invalid">Email</small>
       </div>
       <div class="input-field">
@@ -47,6 +49,10 @@ export default {
   },
   methods: {
     submitHandler() {
+      if (this.$v.$invalid) {
+        this.$v.$touch()
+        return
+      }
       this.$router.push('/');
     },
   },
