@@ -30,8 +30,18 @@
 </template>
 
 <script>
+import {email, required, minLength} from 'vuelidate/lib/validators';
+
 export default {
   name: 'login',
+  data: () => ({
+    email: '',
+    password: '',
+  }),
+  validation: {
+    email: { email, required },
+    password: {},
+  },
   methods: {
     submitHandler() {
       this.$router.push('/');
