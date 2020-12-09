@@ -18,9 +18,9 @@
 
             <ul id="dropdown" class="dropdown-content">
               <li>
-                <a href="#" class="black-text">
+                <router-link to='/profile' class="black-text">
                   <i class="material-icons">account_circle</i>Профиль
-                </a>
+                </router-link>
               </li>
               <li class="divider" tabindex="-1"></li>
               <li>
