@@ -41,6 +41,7 @@ export default {
   data: () => ({
     date: new Date(),
     interval: null,
+    dropdown: null,
   }),
   methods: {
     logout() {
@@ -53,13 +54,15 @@ export default {
       this.date = new Date();
     }, 1000);
     // eslint-disable-next-line no-undef
-    M.Dropdown.init(this.$refs.dropdown, {
+    this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: true,
     });
   },
   beforeDestroy() {
-    console.log('beforedestroy');
     clearInterval(this.interval);
+    if (this.dropdown && this.dropdown.destroy) {
+      this.dropdown.destroy();
+    }
   },
 };
 </script>
