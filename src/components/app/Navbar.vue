@@ -5,7 +5,7 @@
           <a href="#">
             <i class="material-icons black-text" @click.prevent="$emit('click')">dehaze</i>
           </a>
-          <span class="black-text">12.12.12</span>
+          <span class="black-text">{{date}}</span>
         </div>
 
         <ul class="right hide-on-small-and-down">
@@ -38,16 +38,28 @@
 
 <script>
 export default {
+  data: () => ({
+    date: new Date(),
+    interval: null,
+  }),
   methods: {
     logout() {
       console.log('logout');
+      this.$router.push('/login?message=logout');
     },
   },
   mounted() {
+    this.interval = setInterval(() => {
+      this.date = new Date();
+    }, 1000);
     // eslint-disable-next-line no-undef
     M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: true,
     });
+  },
+  beforeDestroy() {
+    console.log('beforedestroy');
+    clearInterval(this.interval);
   },
 };
 </script>
