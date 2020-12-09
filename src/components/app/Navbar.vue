@@ -5,7 +5,7 @@
           <a href="#">
             <i class="material-icons black-text" @click.prevent="$emit('click')">dehaze</i>
           </a>
-          <span class="black-text">{{date}}</span>
+          <span class="black-text">{{date | date('datetime')}}</span>
         </div>
 
         <ul class="right hide-on-small-and-down">
