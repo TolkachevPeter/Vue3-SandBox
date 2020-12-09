@@ -10,7 +10,8 @@
 
         <ul class="right hide-on-small-and-down">
           <li>
-            <a class="dropdown-trigger black-text" href="#" data-target="dropdown">
+            <a class="dropdown-trigger black-text" href="#" data-target="dropdown"
+            ref='dropdown'>
               USER NAME
               <i class="material-icons right">arrow_drop_down</i>
             </a>
@@ -33,3 +34,14 @@
       </div>
     </nav>
 </template>
+
+<script>
+export default {
+  mounted() {
+    // eslint-disable-next-line no-undef
+    M.Dropdown.init(this.$refs.dropdown, {
+      constrainWidth: true,
+    });
+  },
+};
+</script>
