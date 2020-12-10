@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuelidate from 'vuelidate';
+import firebase from 'firebase';
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
@@ -8,7 +9,6 @@ import messagePlugin from './utils/message.plugin';
 import dateFilter from './filters/date.filter';
 import 'materialize-css/dist/js/materialize';
 
-import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/database';
 
@@ -27,8 +27,10 @@ firebase.initializeApp({
   appId: '1:161965001836:web:0278ac17b7ffe3ffb25c49',
 });
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount('#app');
+firebase.auth().onAuthStateChanged(() => {
+  new Vue({
+    router,
+    store,
+    render: (h) => h(App),
+  }).$mount('#app');
+});
