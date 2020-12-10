@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable no-empty */
 import firebase from 'firebase/app';
 
@@ -8,7 +9,7 @@ export default {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password);
       } catch (e) {
-
+        throw e;
       }
     },
   },
