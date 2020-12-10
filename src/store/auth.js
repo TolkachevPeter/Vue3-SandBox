@@ -12,6 +12,18 @@ export default {
         throw e;
       }
     },
+    // eslint-disable-next-line no-unused-vars
+    async register({ dispatch, commit }, { email, password, name }) {
+      try {
+        await firebase.auth().createUserWithEmailAndPassword(email, password);
+      } catch (e) {
+        throw e;
+      }
+    },
+    getUid() {
+      const user = firebase.auth().currentUser;
+      return user ? user.uid : null;
+    },
     async logout() {
       await firebase.auth().signOut();
     },
