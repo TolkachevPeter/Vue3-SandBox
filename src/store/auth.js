@@ -13,9 +13,14 @@ export default {
       }
     },
     // eslint-disable-next-line no-unused-vars
-    async register({ dispatch, commit }, { email, password, name }) {
+    async register({ dispatch }, { email, password, name }) {
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
+        const uid = await dispatch('getUid');
+        await firebase.database().ref(`/users/${uid}/info`).set({
+          bill: 1000,
+          name,
+        });
       } catch (e) {
         throw e;
       }
